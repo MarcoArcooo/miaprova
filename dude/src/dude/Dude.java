@@ -44,7 +44,7 @@ public class Dude extends JFrame {
        
         textArea.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
         
-        JButton startButton = new JButton("Start");
+        JButton startButton = new JButton("Random");
         startButton.setAlignmentX(JButton.CENTER_ALIGNMENT);
         startButton.setBackground(blue);
         startButton.setForeground(Color.WHITE);
