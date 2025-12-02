@@ -14,7 +14,7 @@ import javax.swing.text.DefaultCaret;
  */
 public class Dude extends JFrame {
     
-    private JTextArea textArea;
+    private JTextField textField;
     
     public Dude() {
         setTitle("Random Integer Generator");
@@ -32,17 +32,15 @@ public class Dude extends JFrame {
         getContentPane().setBackground(lightBlue);
         mainPanel.setBackground(lightBlue);
         
-        textArea = new JTextArea(1, 5);
-        textArea.setEditable(false);
-        textArea.setAlignmentX(JTextArea.CENTER_ALIGNMENT);
-        textArea.setLineWrap(false);
-        textArea.setCaretPosition(0);
-        DefaultCaret caret = (DefaultCaret)textArea.getCaret();
-        caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
-        textArea.setMaximumSize(textArea.getPreferredSize());
-        textArea.setOpaque(true);
-       
-        textArea.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
+        textField = new JTextField(5);
+        textField.setEditable(false);
+        textField.setHorizontalAlignment(JTextField.CENTER);
+        textField.setAlignmentX(JTextField.CENTER_ALIGNMENT);
+        textField.setMaximumSize(textField.getPreferredSize());
+        textField.setOpaque(true);
+        textField.setBackground(blue);
+        textField.setForeground(Color.WHITE);
+        textField.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
         
         JButton startButton = new JButton("Random");
         startButton.setAlignmentX(JButton.CENTER_ALIGNMENT);
@@ -53,7 +51,7 @@ public class Dude extends JFrame {
         startButton.setBorderPainted(false);
         startButton.addActionListener(e -> runCalculation());
         
-        mainPanel.add(textArea);
+        mainPanel.add(textField);
         mainPanel.add(Box.createVerticalStrut(10));
         mainPanel.add(startButton);
         add(mainPanel);
@@ -61,15 +59,13 @@ public class Dude extends JFrame {
     }
     
     private void runCalculation() {
-        textArea.setText("");
+        textField.setText("");
         double x1 = 1.0;
         double x2 = 1000.0;
        
             double f = Math.random()/Math.nextDown(1.0);
             double x = x1*(1.0 - f) + x2*f;
-            String result = " " + (int)x;
-            textArea.setText(result);
-        
+            textField.setText(String.valueOf((int)x));
     }
 
     /**
